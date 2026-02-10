@@ -51,7 +51,7 @@ public class UpgradeManager : MonoBehaviour
         return pool[0];
     }
 
-    private int DetermineTier()
+    public int DetermineTier()
     {
         // 각 등급이 나올 확률을 % 단위로 딱 정해두자
         float legendaryChance = 3f;  // 3%
@@ -81,31 +81,31 @@ public class UpgradeManager : MonoBehaviour
         switch (upgrade.data.upgradeType)
         {
             case UpgradeType.AttackRange:
-                // 커서 크기 갱신 (이미 만들어둔 함수 활용!)
-                targetSkill.range += finalValue;
+                // 사거리 증가 (5라고 적으면 0.05만큼 증가)
+                targetSkill.range += (finalValue / 100f);
                 break;
 
             case UpgradeType.AttackDamage:
-                // 기초 공격력(defaultDmg)은 int니까 반올림해서 더해줘
+                // 공격력 포인트는 정수형이므로 그대로 반올림하여 합산
                 targetSkill.powerFactor += Mathf.RoundToInt(finalValue);
                 break;
 
             case UpgradeType.AttackSpeed:
-                // 투사체 속도 증가
-                targetSkill.speed += finalValue;
+                // 투사체 속도 수치 합산 (5라고 적으면 0.05만큼 증가)
+                targetSkill.speed += (finalValue / 100f);
                 break;
 
             case UpgradeType.Cooldown:
-                // 곱적용: 쿨다운 = 현재 쿨다운 * (1 - 감소율)
-                // 예: finalValue가 0.1(10%)이면 90%로 줄어드는 방식이야.
-                // 이렇게 하면 아무리 많이 먹어도 0초가 되지 않아!
-                targetSkill.cooldown *= (1f - finalValue);
-
+                // 5라고 적으면 0.05(5%)로 변환해서 계산
+                float cooldownReductionRate = finalValue / 100f;
+                // 쿨다운 = 현재 쿨다운 * (1 - 감소율)
+                targetSkill.cooldown *= (1f - cooldownReductionRate);
                 break;
 
             case UpgradeType.multiply:
-                // 대미지 배율 증가
-                targetSkill.magnificationFactor += finalValue;
+                // 대미지 배율도 5라고 적으면 0.05(5%) 만큼 증가하도록 변환
+                float magnificationBonus = finalValue / 100f;
+                targetSkill.magnificationFactor += magnificationBonus;
                 break;
         }
 

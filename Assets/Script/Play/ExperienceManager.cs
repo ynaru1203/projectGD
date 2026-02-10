@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
@@ -19,7 +19,10 @@ public class ExperienceManager : MonoBehaviour
 
     public void AddExperience(float amount)
     {
-        currentExp += amount;
+        float expBonus = PassiveManager.Instance.GetStat(PassiveType.ExpGain);
+        // 경험치 획득량 증가
+        currentExp += amount * (1f + expBonus);
+
         while (currentExp >= nextLevelExp) LevelUp();
     }
 
@@ -67,7 +70,13 @@ public class ExperienceManager : MonoBehaviour
             }
             else // 3. 패시브 (33%)
             {
-                selected = new PassiveOption();
+                PassiveData randomData = PassiveManager.Instance.GetRandomPassiveData();
+                if (randomData != null)
+                {
+                    // UpgradeManager의 등급 결정 로직을 활용!
+                    int tier = upgradeManager.DetermineTier();
+                    selected = new PassiveOption(randomData, tier);
+                }
             }
 
             // 선택한 카테고리가 불가능할 때의 예외 처리
@@ -78,7 +87,7 @@ public class ExperienceManager : MonoBehaviour
                 else if (acquired.Count > 0)
                     selected = new SkillUpgradeOption(upgradeManager.GetRandomUpgrades(1)[0], acquired[Random.Range(0, acquired.Count)]);
                 else
-                    selected = new PassiveOption();
+                    selected = new PassiveOption(PassiveManager.Instance.GetRandomPassiveData(), 0);
             }
 
             // 중복 체크 (한 화면에 똑같은 카드가 나오면 안 되니까)

@@ -19,7 +19,7 @@ MonoBehaviour:
   weight: 10
   tierMultipliers:
   - 1
-  - 1.5
-  - 2
-  - 2.5
-  baseValue: 0.1
+  - 1.2
+  - 1.4
+  - 1.6
+  baseValue: 10

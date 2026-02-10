@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc750a7668c04a47b2b8d3b0d0e8e1f, type: 3}
-  m_Name: Cooldown
+  m_Script: {fileID: 11500000, guid: e63b286f22416234082b7249692e9b2a, type: 3}
+  m_Name: CriticalChance
   m_EditorClassIdentifier: 
-  upgradeType: 3
-  upgradeName: "\uCFE8\uB2E4\uC6B4 \uAC10\uC18C"
-  description: "\uCFE8\uB2E4\uC6B4 \uC2DC\uAC04\uC744 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
-  icon: {fileID: 0}
-  weight: 10
+  passiveName: "\uCE58\uBA85\uD0C0\uC728 \uC99D\uAC00"
+  description: 
+  type: 0
+  valuePerLevel: 3
   tierMultipliers:
   - 1
+  - 1.1
   - 1.2
-  - 1.6
-  - 2
-  baseValue: 5
+  - 1.3
+  icon: {fileID: 0}

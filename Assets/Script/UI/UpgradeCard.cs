@@ -75,11 +75,11 @@ public class UpgradeCard : MonoBehaviour
             iconImage.sprite = newSkillOpt.skillToLearn.icon;
             frameImage.color = Color.white;
         }
-        else if (option is PassiveOption)
+        else if (option is PassiveOption passive)
         {
             // 패시브용 기본 아이콘이 있다면 그걸 넣어줘
-            //iconImage.sprite = defaultPassiveIcon;
-            frameImage.color = Color.gray;
+            iconImage.sprite = passive.passiveData.icon;
+            frameImage.color = GetColorByTier(passive.tier);
         }
     }
 }

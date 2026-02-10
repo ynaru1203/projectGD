@@ -25,8 +25,16 @@ public abstract class SkillData : ScriptableObject, ISkill
 
     public string SkillName => skillName;
     public float Cooldown => cooldown;
-    public int dmg => Mathf.RoundToInt((defaultDmg + powerFactor) * magnificationFactor);
-
+    public int dmg
+    {
+        get
+        {
+            float passiveDmgBonus = PassiveManager.Instance != null ? PassiveManager.Instance.GetStat(PassiveType.AttackPower) : 0f;
+            // 최종 대미지 = (기본+강화) * 배율 * (1 + 패시브%)
+            return Mathf.RoundToInt((defaultDmg + powerFactor) * magnificationFactor * (1f + passiveDmgBonus / 100));
+        }
+    }
+    
 
     // 실제 스킬 로직은 여기서 각자 구현하게 될 거야.
     public abstract void Execute(Vector2 mousePosition);
