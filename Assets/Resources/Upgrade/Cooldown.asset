@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc750a7668c04a47b2b8d3b0d0e8e1f, type: 3}
+  m_Name: Cooldown
+  m_EditorClassIdentifier: 
+  upgradeType: 3
+  upgradeName: "\uCFE8\uB2E4\uC6B4 \uAC10\uC18C"
+  description: "\uCFE8\uB2E4\uC6B4 \uC2DC\uAC04\uC744 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+  icon: {fileID: 0}
+  weight: 10
+  tierMultipliers:
+  - 1
+  - 1.5
+  - 2
+  - 2.5
+  baseValue: 0.1

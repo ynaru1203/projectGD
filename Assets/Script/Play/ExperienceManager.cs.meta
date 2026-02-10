@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d33f2e92fcb83694fb22a98fb438c9d1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - upgradeManager: {instanceID: 0}
+  - upgradeUIPrefab: {fileID: 3371701945334811541, guid: ff3f0a5a880abf740bcccd152497f7ee, type: 3}
+  - currentSkill: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
